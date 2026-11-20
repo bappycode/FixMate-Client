@@ -3,11 +3,11 @@ import Link from "next/link";
 import { House, MapPin, Store, UserRound } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
-import type { Service } from "@/types/service";
+import type { PublicService } from "@/types/service";
 
 // Every card has the same structure and the footer is pushed to the bottom (mt-auto),
 // so cards in a grid are always equal in height and width.
-export function ServiceCard({ service }: { service: Service }) {
+export function ServiceCard({ service }: { service: PublicService }) {
   const ModeIcon = service.serviceMode === "Home Visit" ? House : Store;
 
   return (
