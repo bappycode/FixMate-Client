@@ -3,7 +3,7 @@ import { authClient } from "./auth-client";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 /** An error from the Express API, carrying the HTTP status (0 means the server was unreachable). */
-export class ApiError extends Error {
+class ApiError extends Error {
   readonly status: number;
 
   constructor(message: string, status: number) {

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import type { Role } from "@/lib/roles";
 
-export type DashboardNavItem = { href: string; label: string; icon: LucideIcon };
+type DashboardNavItem = { href: string; label: string; icon: LucideIcon };
 
 const PROFILE_ITEM: DashboardNavItem = { href: "/dashboard/profile", label: "Update Profile", icon: UserPen };
 

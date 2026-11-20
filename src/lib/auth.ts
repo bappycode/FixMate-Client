@@ -50,7 +50,8 @@ export const auth = betterAuth({
         // The profile form can change name, phone, area, bio and image, but
         // never the role. Role changes go through the protected admin API only.
         before: async (data) => {
-          const { role: _ignoredRole, ...safeData } = data as Record<string, unknown>;
+          const safeData: Record<string, unknown> = { ...data };
+          delete safeData.role;
           return { data: safeData };
         },
       },

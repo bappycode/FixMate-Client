@@ -1,7 +1,7 @@
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const JOB_STEPS = ["Requested", "Accepted", "In Progress", "Completed", "Paid"] as const;
+const JOB_STEPS = ["Requested", "Accepted", "In Progress", "Completed", "Paid"] as const;
 
 type JobStepperProps = {
   /** Index into JOB_STEPS of the step the job is currently at. */

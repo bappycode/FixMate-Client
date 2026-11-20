@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 const uri = process.env.MONGODB_URI;
 
 if (!uri) {
-  throw new Error("MONGODB_URI is not set. Add it to .env.local.");
+  throw new Error("MONGODB_URI is not set. Add it to .env.");
 }
 
 // In development, hot reloads would open a new connection on every change.
