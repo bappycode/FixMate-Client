@@ -17,3 +17,12 @@ export type Service = {
   isAvailable: boolean;
   createdAt: string;
 };
+
+/** What the public endpoints return: the technician's email is never sent to visitors. */
+export type PublicService = Omit<Service, "technicianEmail">;
+
+/** GET /api/services/:id: the service plus a public summary of its technician. */
+export type ServiceDetails = {
+  service: PublicService;
+  technician: { name: string; image: string | null; area: string; bio: string };
+};
