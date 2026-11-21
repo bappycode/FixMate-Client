@@ -7,6 +7,18 @@ This repository is the **Next.js client**. The REST API lives in the [FixMate Se
 - **Live site:** https://fixmate-client-peach.vercel.app
 - **API:** https://fixmate-server-neon.vercel.app
 
+## Demo accounts
+
+Use these to try every role on the live site.
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | admin@gmail.com | Admin000 |
+| Technician | alex@gmail.com | Alex000 |
+| Customer | david@gmail.com | David000 |
+
+Nobody can sign up as an admin. Sign-up offers Customer and Technician only, and the admin account is created in the database.
+
 ## Features
 
 **Public**
@@ -40,6 +52,23 @@ This repository is the **Next.js client**. The REST API lives in the [FixMate Se
 - [Recharts](https://recharts.org) (through the shadcn chart component) for dashboard charts
 - [Better Auth](https://better-auth.com) with the MongoDB adapter and the JWT plugin
 - [ImgBB](https://api.imgbb.com) for image uploads
+
+### npm packages used
+
+| Package | Used for |
+| --- | --- |
+| `next`, `react`, `react-dom` | The app framework (Next.js App Router) |
+| `better-auth`, `@better-auth/mongo-adapter` | Sign up, sign in, sessions and the JWT plugin |
+| `mongodb` | Database driver, used by Better Auth |
+| `shadcn`, `@base-ui/react` | UI components (dialogs, dropdowns, switch, tables) |
+| `tailwindcss`, `@tailwindcss/turbopack`, `tw-animate-css` | Styling and animations |
+| `class-variance-authority`, `clsx`, `tailwind-merge` | Button variants and class name helpers |
+| `lucide-react` | Icons |
+| `sonner` | Toast notifications |
+| `recharts` | Dashboard charts |
+| `typescript`, `@types/node`, `@types/react`, `@types/react-dom` | TypeScript |
+| `eslint`, `eslint-config-next` | Linting |
+| `babel-plugin-react-compiler` | React Compiler |
 
 ## How it fits together
 
