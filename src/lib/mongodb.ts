@@ -9,9 +9,11 @@ if (!uri) {
 
 // Vercel freezes a function between requests. A database connection that stays open while the
 // function is frozen is dead when it wakes up, and the next request then fails (for example with
-// "Topology is closed"). So idle connections are closed after 5 seconds, and attachDatabasePool
-// keeps the function alive just long enough for that to happen before it is frozen.
-const IDLE_CONNECTION_MS = 5000;
+// "Topology is closed"). So idle connections are closed after 30 seconds (long enough that
+// someone clicking around the site keeps reusing one connection instead of reconnecting on
+// every page), and attachDatabasePool keeps the function alive just long enough for that to
+// happen before it is frozen.
+const IDLE_CONNECTION_MS = 30_000;
 
 function createClient(): MongoClient {
   const mongoClient = new MongoClient(uri as string, { maxIdleTimeMS: IDLE_CONNECTION_MS });
