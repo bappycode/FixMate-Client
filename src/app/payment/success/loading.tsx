@@ -1,6 +1,5 @@
 import { Loader2 } from "lucide-react";
 
-// Shown while the server asks Stripe about the payment, so the customer sees progress instead of a blank page.
 export default function PaymentSuccessLoading() {
   return (
     <div className="mx-auto flex max-w-xl flex-col items-center gap-5 rounded-2xl border bg-card p-10 text-center" role="status">

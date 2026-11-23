@@ -1,7 +1,6 @@
 type PageHeaderProps = {
   title: string;
   description?: string;
-  /** Optional right-aligned slot, e.g. a primary action button. */
   action?: React.ReactNode;
 };
 

@@ -32,7 +32,6 @@ export function CustomerBookingsTable({
   const [bookings, setBookings] = useState(initialBookings);
   const [toCancel, setToCancel] = useState<Booking | null>(null);
   const [cancelling, setCancelling] = useState(false);
-  // The booking whose timeline is open (one at a time).
   const [trackedId, setTrackedId] = useState<string | null>(null);
 
   async function confirmCancel() {
@@ -103,7 +102,6 @@ export function CustomerBookingsTable({
                     {formatDate(booking.preferredDate)}
                   </TableCell>
                   <TableCell>
-                    {/* The price is an estimate until the technician sets the final amount. */}
                     {booking.status === "completed" ? (
                       <span className="font-medium">
                         {formatPrice(booking.finalAmount)}
@@ -154,7 +152,6 @@ export function CustomerBookingsTable({
                           <X aria-hidden /> Cancel
                         </Button>
                       ) : null}
-                      {/* Pay Now only for a completed job that is still unpaid. A paid job shows the Paid badge instead. */}
                       {booking.status === "completed" &&
                       booking.paymentStatus === "unpaid" ? (
                         <PayNowButton bookingId={booking._id} />

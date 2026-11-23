@@ -28,7 +28,6 @@ export default async function AdminOverviewPage() {
   const { user } = await requireSession();
   const stats = await serverApiFetch<AdminStats>("/api/admin/stats");
 
-  // The server counts every status; the chart shows them in the order a job moves through them.
   const bookingPoints: ChartPoint[] = STATUS_ORDER.map((status) => ({
     label: STATUS_STYLES[status].label,
     value: stats.bookingsByStatus.find((item) => item.status === status)?.count ?? 0,

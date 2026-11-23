@@ -20,19 +20,14 @@ const selectClass =
   "h-10 w-full rounded-lg border border-input bg-card px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
 
 type ServiceFiltersBarProps = {
-  /** The filters currently in the URL. The server page reads them and passes them in. */
   filters: ServiceFilters;
   resultCount: number;
 };
 
-// The browse page keeps its state in the URL (/services?search=&category=&mode=&sort=).
-// So filters survive a reload, can be shared as a link, and the Home page can open a category.
-// Changing a control updates the URL; the server page then searches MongoDB again.
 export function ServiceFiltersBar({ filters, resultCount }: ServiceFiltersBarProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  // useOptimistic shows the new choice at once, while the server loads the new results.
   const [category, setCategory] = useOptimistic(filters.category ?? "");
   const [mode, setMode] = useOptimistic(filters.mode ?? "");
   const [sort, setSort] = useOptimistic(filters.sort ?? "newest");
@@ -62,7 +57,6 @@ export function ServiceFiltersBar({ filters, resultCount }: ServiceFiltersBarPro
   function handleSearchChange(value: string) {
     setSearchText(value);
     clearTimeout(searchTimer.current);
-    // Wait until the person stops typing, so each keystroke does not hit the server.
     searchTimer.current = setTimeout(() => {
       startTransition(() => router.replace(toUrl({ ...current(), search: value }), { scroll: false }));
     }, SEARCH_DELAY_MS);

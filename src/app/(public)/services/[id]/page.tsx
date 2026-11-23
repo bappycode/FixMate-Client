@@ -33,12 +33,10 @@ function Fact({ icon: Icon, label, value }: { icon: LucideIcon; label: string; v
 export default async function ServiceDetailsPage({ params }: PageProps<"/services/[id]">) {
   const { id } = await params;
 
-  // A service that does not exist, or is not approved and available, is a 404.
   const details = await getService(id);
   if (!details) notFound();
   const { service, technician } = details;
 
-  // The signed-in person (if any) decides what the Request Repair button does.
   const session = await getSession();
   let viewer: Viewer = { kind: "guest" };
   if (session) {

@@ -22,7 +22,6 @@ import { formatPrice } from "@/lib/format";
 import { hasErrors, type FieldErrors } from "@/lib/validation";
 import type { Booking } from "@/types/booking";
 
-/** Who is looking at the page decides what the Request Repair button does. */
 export type Viewer =
   | { kind: "guest" }
   | { kind: "blocked"; roleLabel: string }
@@ -57,7 +56,6 @@ export function RepairRequestPanel({ serviceId, basePrice, estimatedDuration, vi
 
       {viewer.kind === "guest" ? (
         <div className="flex flex-col gap-2">
-          {/* After signing in, the person comes back to this service page. */}
           <Link
             href={`/sign-in?redirect=${encodeURIComponent(`/services/${serviceId}`)}`}
             className={buttonVariants({ variant: "cta", size: "xl" })}
@@ -144,7 +142,6 @@ function RequestForm({ serviceId, customer }: { serviceId: string; customer: Ext
       });
       setSent(true);
     } catch (error) {
-      // A duplicate shows the server's message: "You already have an active request for this service".
       toast.error(error instanceof Error ? error.message : "Could not send your request. Please try again.");
     } finally {
       setSubmitting(false);

@@ -20,9 +20,6 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
   );
 }
 
-// Stripe sends the customer here after they pay, with ?session_id=cs_test_...
-// This page hands that id to the Express server, which asks STRIPE directly what happened,
-// checks it, saves the payment once, and marks the booking paid. Only then is success shown.
 export default async function PaymentSuccessPage({ searchParams }: PageProps<"/payment/success">) {
   const params = await searchParams;
   const sessionId = typeof params.session_id === "string" ? params.session_id : undefined;

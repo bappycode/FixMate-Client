@@ -19,7 +19,7 @@ const errorMessage = (error: unknown, fallback: string) => (error instanceof Err
 
 export function MyServicesTable({ initialServices }: { initialServices: Service[] }) {
   const [services, setServices] = useState(initialServices);
-  const [switching, setSwitching] = useState<string[]>([]); // ids whose switch is saving
+  const [switching, setSwitching] = useState<string[]>([]);
   const [toDelete, setToDelete] = useState<Service | null>(null);
   const [deleting, setDeleting] = useState(false);
 

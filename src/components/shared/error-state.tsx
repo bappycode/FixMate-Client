@@ -7,13 +7,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 
 type ErrorStateProps = {
   error: Error & { digest?: string };
-  /** Re-renders the failed part of the page. */
   reset: () => void;
   href: string;
   linkLabel: string;
 };
 
-// The "something went wrong" content, shared by the public site and the dashboard.
 export function ErrorState({ error, reset, href, linkLabel }: ErrorStateProps) {
   useEffect(() => {
     console.error(error);

@@ -6,7 +6,6 @@ import { categoryHref, CATEGORIES } from "@/lib/categories";
 import { cn } from "@/lib/utils";
 import { HeroVisual } from "./hero-visual";
 
-// Chips under the search box link straight to a filtered services page.
 const QUICK_CATEGORIES = CATEGORIES.slice(0, 4);
 
 export function Hero() {
@@ -30,7 +29,6 @@ export function Hero() {
             the work is done.
           </p>
 
-          {/* A plain GET form: it works without JavaScript and lands on /services?search=... */}
           <form
             action="/services"
             method="get"

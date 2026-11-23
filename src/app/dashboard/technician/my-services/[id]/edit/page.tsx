@@ -12,7 +12,6 @@ export default async function EditServicePage({ params }: PageProps<"/dashboard/
   const { id } = await params;
   const { user } = await requireSession();
 
-  // The API only returns the service if it belongs to this technician; anything else is a 404.
   const data = await serverApiFetchOrNull<{ service: Service }>(`/api/services/mine/${id}`);
   if (!data) notFound();
 

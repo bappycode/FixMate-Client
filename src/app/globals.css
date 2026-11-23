@@ -53,10 +53,9 @@
 }
 
 :root {
-  /* FixMate palette: ink, teal, paper. Coral is reserved for primary calls to action. */
   --ink: #0e1b24;
   --tint: #e6f3f4;
-  --cta: #c9421f; /* darkened from #d94a26 so white text on it passes WCAG AA (4.9:1) */
+  --cta: #c9421f;
   --cta-foreground: #ffffff;
 
   --background: #f6f4ef;
@@ -137,7 +136,6 @@
   html {
     @apply font-sans;
   }
-  /* Smooth in-page scrolling, but not for people who ask their OS to reduce motion. */
   @media (prefers-reduced-motion: no-preference) {
     html {
       scroll-behavior: smooth;

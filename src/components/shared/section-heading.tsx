@@ -5,11 +5,9 @@ type SectionHeadingProps = {
   title: string;
   description?: string;
   align?: "left" | "center";
-  /** Optional right-aligned slot, e.g. a "View all" link. */
   action?: React.ReactNode;
 };
 
-// One heading style for every section (same font, size and color), as the design rules require.
 export function SectionHeading({ eyebrow, title, description, align = "left", action }: SectionHeadingProps) {
   const centered = align === "center";
 

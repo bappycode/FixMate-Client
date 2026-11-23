@@ -4,7 +4,6 @@ type ChartPanelProps = {
   children: React.ReactNode;
 };
 
-// The white box every dashboard chart sits in, matching the stat cards.
 export function ChartPanel({ title, description, children }: ChartPanelProps) {
   return (
     <section className="flex min-w-0 flex-col gap-4 rounded-xl border bg-card p-5">

@@ -9,7 +9,6 @@ type SelectFieldProps = {
   error?: string;
 } & Omit<React.ComponentProps<"select">, "id">;
 
-// A native <select> styled like our Input: reliable on every device and fully accessible.
 export function SelectField({ id, label, placeholder, options, error, className, ...selectProps }: SelectFieldProps) {
   const errorId = `${id}-error`;
 

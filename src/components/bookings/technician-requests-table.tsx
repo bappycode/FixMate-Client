@@ -47,7 +47,6 @@ export function TechnicianRequestsTable({ initialBookings }: { initialBookings: 
   const countOf = (value: Filter) =>
     value === "all" ? bookings.length : bookings.filter((booking) => booking.status === value).length;
 
-  // Every job change goes through here: one request to the server, which enforces the pipeline.
   async function changeStatus(booking: Booking, status: BookingStatus, finalAmount?: number): Promise<boolean> {
     setWorkingId(booking._id);
     try {
@@ -68,7 +67,7 @@ export function TechnicianRequestsTable({ initialBookings }: { initialBookings: 
 
   function openComplete(booking: Booking) {
     setCompleting(booking);
-    setAmount(String(booking.basePrice)); // pre-filled with the base price
+    setAmount(String(booking.basePrice));
     setAmountError(undefined);
   }
 
@@ -150,7 +149,6 @@ export function TechnicianRequestsTable({ initialBookings }: { initialBookings: 
                       <StatusBadge status={booking.status} />
                     </TableCell>
                     <TableCell className="pr-4">
-                      {/* Only the actions that are valid for this status are shown. */}
                       <div className="flex justify-end gap-2">
                         {booking.status === "requested" ? (
                           <>

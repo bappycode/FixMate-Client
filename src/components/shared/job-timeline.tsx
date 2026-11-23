@@ -6,15 +6,10 @@ import { STATUS_STYLES } from "./booking-badges";
 
 type TimelineStatus = BookingHistoryEntry["status"];
 
-/** The normal life of a job. Rejected and cancelled jobs leave this path and stop. */
 const HAPPY_PATH: TimelineStatus[] = ["requested", "accepted", "in-progress", "completed", "paid"];
 
 const labelOf = (status: TimelineStatus) => (status === "paid" ? "Paid" : STATUS_STYLES[status].label);
 
-/**
- * The steps to show. Jobs created before the timeline existed have no history, so their
- * timeline is rebuilt from what we do know: when the request was made, and the current status.
- */
 function stepsOf(booking: Booking): BookingHistoryEntry[] {
   if (booking.statusHistory && booking.statusHistory.length > 0) return booking.statusHistory;
 
@@ -24,8 +19,6 @@ function stepsOf(booking: Booking): BookingHistoryEntry[] {
   return steps;
 }
 
-// A vertical timeline of everything that happened to a job, with the time of each step,
-// followed by the steps that are still to come (faded) so the customer knows what is next.
 export function JobTimeline({ booking }: { booking: Booking }) {
   const done = stepsOf(booking);
   const last = done[done.length - 1].status;

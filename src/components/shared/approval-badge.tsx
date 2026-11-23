@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { Service } from "@/types/service";
 
-// One set of colors for a service's approval state, used on every dashboard.
 const STYLES: Record<Service["approvalStatus"], { label: string; className: string }> = {
   pending: { label: "Pending", className: "bg-amber-100 text-amber-800" },
   approved: { label: "Approved", className: "bg-green-100 text-green-800" },

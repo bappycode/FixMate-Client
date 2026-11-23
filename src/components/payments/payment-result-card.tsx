@@ -11,13 +11,10 @@ type PaymentResultCardProps = {
   tone: keyof typeof TONES;
   title: string;
   description: string;
-  /** Extra content, such as the receipt details. */
   children?: React.ReactNode;
-  /** Buttons shown under the content. */
   actions?: React.ReactNode;
 };
 
-// The card used by the payment success, failure and cancelled pages.
 export function PaymentResultCard({ tone, title, description, children, actions }: PaymentResultCardProps) {
   const { icon: Icon, ring } = TONES[tone];
 

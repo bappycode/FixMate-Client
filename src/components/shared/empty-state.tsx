@@ -4,7 +4,6 @@ type EmptyStateProps = {
   icon: LucideIcon;
   title: string;
   description: string;
-  /** Call to action, usually a button or link. */
   action?: React.ReactNode;
 };
 

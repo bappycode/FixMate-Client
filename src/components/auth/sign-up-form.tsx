@@ -33,7 +33,6 @@ export function SignUpForm() {
   const handleChange = (field: Field) => (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setValues((current) => ({ ...current, [field]: value }));
-    // Once a field has shown an error, re-check it as the user types.
     if (errors[field]) validateField(field, value);
   };
 

@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { BookingStatus, PaymentStatus } from "@/types/booking";
 
-// One set of colors for job and payment states, used on every dashboard:
-// requested = blue, accepted = indigo, in progress = amber, completed = green, rejected = red, cancelled = gray.
 export const STATUS_STYLES: Record<BookingStatus, { label: string; className: string }> = {
   requested: { label: "Requested", className: "bg-blue-100 text-blue-800" },
   accepted: { label: "Accepted", className: "bg-indigo-100 text-indigo-800" },

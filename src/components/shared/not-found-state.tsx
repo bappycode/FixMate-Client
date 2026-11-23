@@ -7,11 +7,9 @@ type NotFoundStateProps = {
   linkLabel: string;
 };
 
-// The 404 content, shared by the public site and the dashboard.
 export function NotFoundState({ href, linkLabel }: NotFoundStateProps) {
   return (
     <div className="flex flex-col items-center gap-6 px-4 py-16 text-center sm:py-24">
-      {/* A wrench and a hammer crossed over the "0" of 404: the repair-shop version of a dead end. */}
       <div className="flex items-center gap-2 font-heading text-8xl leading-none font-bold text-foreground sm:text-9xl" aria-hidden>
         <span>4</span>
         <span className="relative flex size-24 items-center justify-center rounded-full bg-tint text-primary sm:size-32">

@@ -5,8 +5,6 @@ const IMGBB_UPLOAD_URL = "https://api.imgbb.com/1/upload";
 
 const reply = (message: string, status: number) => Response.json({ message }, { status });
 
-// Receives an image from the browser and forwards it to ImgBB. This runs on the server so
-// IMGBB_API_KEY never reaches the browser. Only signed-in users may upload.
 export async function POST(request: Request) {
   const session = await auth.api.getSession({ headers: request.headers });
   if (!session) return reply("Please sign in to upload images.", 401);

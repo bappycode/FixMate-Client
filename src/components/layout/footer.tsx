@@ -21,7 +21,6 @@ export function Footer() {
     <footer className="bg-ink text-white/70">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div className="flex flex-col gap-5">
-          {/* The logo inherits the footer's text color; here it is set to white. */}
           <div className="text-white">
             <Logo />
           </div>

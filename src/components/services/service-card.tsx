@@ -5,8 +5,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { formatPrice } from "@/lib/format";
 import type { PublicService } from "@/types/service";
 
-// Every card has the same structure and the footer is pushed to the bottom (mt-auto),
-// so cards in a grid are always equal in height and width.
 export function ServiceCard({ service }: { service: PublicService }) {
   const ModeIcon = service.serviceMode === "Home Visit" ? House : Store;
 
@@ -57,7 +55,6 @@ export function ServiceCard({ service }: { service: PublicService }) {
   );
 }
 
-/** Same outline as ServiceCard, shown while the data loads. */
 export function ServiceCardSkeleton() {
   return (
     <div className="flex h-full flex-col overflow-hidden rounded-xl border bg-card" aria-hidden>

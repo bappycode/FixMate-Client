@@ -13,10 +13,8 @@ import { getServices, type ServiceFilters } from "@/lib/services-api";
 
 export const metadata: Metadata = { title: "Browse Services" };
 
-// A query value is only used when it is a single string (?category=AC, not ?category=AC&category=TV).
 const single = (value: string | string[] | undefined) => (typeof value === "string" ? value : undefined);
 
-/** The link to a page of results. It keeps the current filters; page 1 has no ?page. */
 function pageHref(filters: ServiceFilters, page: number): string {
   const query = new URLSearchParams();
   for (const [key, value] of Object.entries(filters)) {
@@ -36,11 +34,9 @@ export default async function ServicesPage({ searchParams }: PageProps<"/service
   };
   const hasFilters = Object.values(filters).some(Boolean);
 
-  // The search, filters, sorting and paging are done by MongoDB on the Express server.
   const { services, total, page, pageSize } = await getServices({ ...filters, page: single(params.page) });
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
-  // An old link to a page that no longer exists (for example after services were removed): go to the last page.
   if (services.length === 0 && total > 0) redirect(pageHref(filters, totalPages));
 
   return (

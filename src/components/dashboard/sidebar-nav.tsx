@@ -9,14 +9,12 @@ import { navItemsFor } from "./nav-config";
 
 type SidebarNavProps = {
   role: Role;
-  /** Called when a link is chosen, so the mobile drawer can close itself. */
   onNavigate?: () => void;
 };
 
 export function SidebarNav({ role, onNavigate }: SidebarNavProps) {
   const pathname = usePathname();
   const items = navItemsFor(role);
-  // The overview link ("/dashboard/<role>") must not stay highlighted on its sub-pages.
   const overviewHref = `/dashboard/${role}`;
 
   return (

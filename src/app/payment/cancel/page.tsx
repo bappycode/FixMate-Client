@@ -5,7 +5,6 @@ import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = { title: "Payment cancelled" };
 
-// Nothing is saved or changed when a payment is cancelled, so this page is purely informational.
 export default function PaymentCancelPage() {
   return (
     <PaymentResultCard

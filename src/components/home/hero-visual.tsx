@@ -1,8 +1,6 @@
 import { BadgeCheck, HandCoins, Smartphone } from "lucide-react";
 import { JobStepper } from "@/components/shared/job-stepper";
 
-// A built-in illustration: an example job card showing FixMate's job tracking.
-// It is decorative sample content, so it is hidden from screen readers.
 export function HeroVisual() {
   return (
     <div className="relative mx-auto w-full max-w-md pb-6 lg:max-w-none lg:pb-0" aria-hidden>

@@ -7,12 +7,6 @@ if (!uri) {
   throw new Error("MONGODB_URI is not set. Add it to .env.");
 }
 
-// Vercel freezes a function between requests. A database connection that stays open while the
-// function is frozen is dead when it wakes up, and the next request then fails (for example with
-// "Topology is closed"). So idle connections are closed after 30 seconds (long enough that
-// someone clicking around the site keeps reusing one connection instead of reconnecting on
-// every page), and attachDatabasePool keeps the function alive just long enough for that to
-// happen before it is frozen.
 const IDLE_CONNECTION_MS = 30_000;
 
 function createClient(): MongoClient {
@@ -21,8 +15,6 @@ function createClient(): MongoClient {
   return mongoClient;
 }
 
-// In development, hot reloads would open a new connection on every change.
-// Keeping the client on globalThis reuses a single connection instead.
 const globalForMongo = globalThis as unknown as { mongoClient?: MongoClient };
 
 export const client = globalForMongo.mongoClient ?? createClient();
@@ -31,5 +23,4 @@ if (process.env.NODE_ENV !== "production") {
   globalForMongo.mongoClient = client;
 }
 
-// The database name comes from the connection string.
 export const db = client.db();

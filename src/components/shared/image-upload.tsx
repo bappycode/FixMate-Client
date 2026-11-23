@@ -8,16 +8,12 @@ import { cn } from "@/lib/utils";
 
 type ImageUploadProps = {
   label: string;
-  /** The saved image, shown until a new file is chosen (used when editing). */
   currentImage?: string | null;
-  /** Called with the chosen file. Nothing is uploaded here; the form uploads on submit. */
   onFileChange: (file: File) => void;
-  /** An error from the form, such as "image is required". */
   error?: string;
   disabled?: boolean;
 };
 
-// A click-to-upload banner area with a live preview of the chosen file.
 export function ImageUpload({ label, currentImage, onFileChange, error, disabled }: ImageUploadProps) {
   const inputId = useId();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -25,7 +21,6 @@ export function ImageUpload({ label, currentImage, onFileChange, error, disabled
   const shownError = fileError ?? error;
   const shownImage = previewUrl ?? currentImage;
 
-  // Free the temporary preview URL when it is replaced or the component goes away.
   useEffect(() => {
     return () => {
       if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -34,7 +29,7 @@ export function ImageUpload({ label, currentImage, onFileChange, error, disabled
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
-    event.target.value = ""; // lets the same file be picked again later
+    event.target.value = "";
     if (!file) return;
 
     const problem = validateImageFile(file);
@@ -70,7 +65,6 @@ export function ImageUpload({ label, currentImage, onFileChange, error, disabled
       >
         {shownImage ? (
           <>
-            {/* A blob: preview cannot be optimised by Next, so it is shown as-is. */}
             <Image src={shownImage} alt="Service banner" fill unoptimized={Boolean(previewUrl)} sizes="340px" className="object-cover" />
             <span className="absolute inset-x-0 bottom-0 bg-ink/70 py-2 text-sm font-medium text-white">
               Click to change image

@@ -5,11 +5,9 @@ import { cn } from "@/lib/utils";
 type PaginationProps = {
   page: number;
   totalPages: number;
-  /** The link for a page number. The caller decides which filters stay in it. */
   hrefFor: (page: number) => string;
 };
 
-/** Page numbers to show: always the first and last, and the pages next to the current one. */
 function visiblePages(page: number, totalPages: number): (number | "gap")[] {
   const wanted = new Set([1, totalPages, page - 1, page, page + 1]);
   const pages = [...wanted].filter((number) => number >= 1 && number <= totalPages).sort((a, b) => a - b);
@@ -25,8 +23,6 @@ function visiblePages(page: number, totalPages: number): (number | "gap")[] {
 const itemClass =
   "inline-flex h-10 min-w-10 items-center justify-center rounded-lg border bg-card px-3 text-sm font-medium transition-colors hover:border-primary hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
 
-// Plain links, so paging works without JavaScript, can be shared, and the server page
-// simply loads the requested page from MongoDB.
 export function Pagination({ page, totalPages, hrefFor }: PaginationProps) {
   if (totalPages <= 1) return null;
 

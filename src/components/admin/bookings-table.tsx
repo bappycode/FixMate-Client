@@ -11,7 +11,6 @@ import type { Booking, BookingStatus } from "@/types/booking";
 
 type Filter = BookingStatus | "all";
 
-// Read-only: the admin watches every job on the platform but does not change them.
 export function AdminBookingsTable({ bookings }: { bookings: Booking[] }) {
   const [filter, setFilter] = useState<Filter>("all");
   const visible = filter === "all" ? bookings : bookings.filter((booking) => booking.status === filter);

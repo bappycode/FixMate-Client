@@ -4,7 +4,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { formatDate, formatPrice } from "@/lib/format";
 import type { Payment } from "@/types/payment";
 
-// Every payment on the platform, as a plain server-rendered table.
 export function TransactionsTable({ payments }: { payments: Payment[] }) {
   if (payments.length === 0) {
     return (

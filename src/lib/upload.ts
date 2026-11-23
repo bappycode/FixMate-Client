@@ -1,4 +1,3 @@
-/** Uploads an image through our own /api/upload route and returns its public URL. */
 export async function uploadImage(file: File): Promise<string> {
   const form = new FormData();
   form.append("image", file);

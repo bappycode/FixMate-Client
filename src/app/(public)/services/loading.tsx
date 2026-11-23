@@ -2,7 +2,6 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { ServiceCardSkeleton } from "@/components/services/service-card";
 
-// Shown instantly while the server loads the services.
 export default function ServicesLoading() {
   return (
     <div aria-busy="true" aria-live="polite">

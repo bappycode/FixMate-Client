@@ -19,7 +19,6 @@ const validators: Record<Field, (value: string) => string | undefined> = {
 };
 
 type SignInFormProps = {
-  /** A same-site path the user was trying to open before being sent here. */
   redirectTo: string | null;
 };
 

@@ -1,6 +1,3 @@
-// Brand logos as inline SVG (the icon library has none). Each takes the surrounding text color.
-// XIcon is the current X logo, replacing the old Twitter bird.
-
 type IconProps = { className?: string };
 
 export function XIcon({ className }: IconProps) {

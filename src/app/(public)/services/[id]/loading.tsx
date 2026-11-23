@@ -1,6 +1,5 @@
 import { Container } from "@/components/layout/container";
 
-// Shown instantly while the server loads the service.
 export default function ServiceDetailsLoading() {
   return (
     <Container className="py-8 sm:py-12" aria-busy="true">

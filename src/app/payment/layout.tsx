@@ -2,8 +2,6 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { requireRole } from "@/lib/session";
 
-// Every payment page is for customers only. Anyone else is sent to their own dashboard,
-// and a signed-out visitor is redirected to sign in by proxy.ts before this even runs.
 export default async function PaymentLayout({ children }: { children: React.ReactNode }) {
   await requireRole("customer");
 

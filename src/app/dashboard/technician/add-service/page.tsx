@@ -5,7 +5,6 @@ import { requireSession } from "@/lib/session";
 
 export const metadata: Metadata = { title: "Add Service" };
 
-// Only technicians reach this page: dashboard/technician/layout.tsx checks the role.
 export default async function AddServicePage() {
   const { user } = await requireSession();
 

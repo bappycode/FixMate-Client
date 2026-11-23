@@ -33,8 +33,8 @@ const EMPTY_TEXT: Record<Filter, { title: string; description: string }> = {
 
 export function ServicesApprovalTable({ initialServices }: { initialServices: Service[] }) {
   const [services, setServices] = useState(initialServices);
-  const [filter, setFilter] = useState<Filter>("pending"); // pending first: that is the admin's to-do list
-  const [working, setWorking] = useState<string | null>(null); // id of the service being updated
+  const [filter, setFilter] = useState<Filter>("pending");
+  const [working, setWorking] = useState<string | null>(null);
   const [toReject, setToReject] = useState<Service | null>(null);
 
   const countOf = (value: Filter) =>

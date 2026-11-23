@@ -6,7 +6,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { formatDate, formatPrice } from "@/lib/format";
 import type { CustomerPayment } from "@/types/payment";
 
-// A plain server-rendered table: payment history never changes from this page, so it needs no client state.
 export function CustomerPaymentsTable({ payments }: { payments: CustomerPayment[] }) {
   if (payments.length === 0) {
     return (

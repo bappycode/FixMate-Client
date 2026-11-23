@@ -27,7 +27,6 @@ export default function HomePage() {
             </Link>
           }
         />
-        {/* The skeleton shows instantly while the services load from the API. */}
         <Suspense fallback={<FeaturedServicesSkeleton />}>
           <FeaturedServices />
         </Suspense>

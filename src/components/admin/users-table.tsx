@@ -13,7 +13,6 @@ import type { AdminUser } from "@/types/user";
 
 type UsersTableProps = {
   initialUsers: AdminUser[];
-  /** The signed-in admin. Their own role cannot be changed here. */
   currentUserId: string;
 };
 

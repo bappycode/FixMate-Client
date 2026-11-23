@@ -49,13 +49,10 @@ const validators: Record<TextField, (value: string) => string | undefined> = {
 };
 
 type ServiceFormProps = {
-  /** The signed-in technician. Shown read-only; the server takes them from the token anyway. */
   technician: { name: string; email: string };
-  /** Pass a service to edit it. Leave it out to add a new one. */
   service?: Service;
 };
 
-// One form for both "add" and "edit", so the two can never drift apart.
 export function ServiceForm({ technician, service }: ServiceFormProps) {
   const router = useRouter();
   const isEditing = Boolean(service);
@@ -75,7 +72,7 @@ export function ServiceForm({ technician, service }: ServiceFormProps) {
   const [serviceMode, setServiceMode] = useState<ServiceMode>(service?.serviceMode ?? "Home Visit");
   const [photo, setPhoto] = useState<File | null>(null);
   const [errors, setErrors] = useState<FieldErrors<Field>>({});
-  const [formKey, setFormKey] = useState(0); // changing it clears the image picker after a save
+  const [formKey, setFormKey] = useState(0);
   const [submitting, setSubmitting] = useState(false);
 
   const validateField = (field: TextField, value: string) =>
@@ -85,11 +82,9 @@ export function ServiceForm({ technician, service }: ServiceFormProps) {
     (field: TextField) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const value = event.target.value;
       setValues((current) => ({ ...current, [field]: value }));
-      // Once a field has shown an error, re-check it as the user types.
       if (errors[field]) validateField(field, value);
     };
 
-  // Props shared by every text field: value, change and blur handlers, and its error.
   const bind = (field: TextField) => ({
     value: values[field],
     onChange: handleChange(field),
@@ -103,7 +98,6 @@ export function ServiceForm({ technician, service }: ServiceFormProps) {
     const textFields = Object.keys(EMPTY_VALUES) as TextField[];
     const nextErrors: FieldErrors<Field> = {
       ...Object.fromEntries(textFields.map((field) => [field, validators[field](values[field])])),
-      // When editing, the saved banner is kept unless a new file is chosen.
       image: isEditing ? undefined : validateServiceImage(photo),
     };
     setErrors(nextErrors);
@@ -115,7 +109,6 @@ export function ServiceForm({ technician, service }: ServiceFormProps) {
 
     setSubmitting(true);
     try {
-      // 1. Upload a new banner to ImgBB if one was chosen, 2. save through the Express API.
       const image = photo ? await uploadImage(photo) : service?.image;
       const payload = JSON.stringify({
         title: values.title.trim(),

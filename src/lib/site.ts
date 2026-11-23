@@ -1,4 +1,3 @@
-// Site-wide details in one place. Replace the contact and social values with the real ones.
 export const SITE = {
   name: "FixMate",
   tagline: "Trusted technicians for your devices and home appliances. Track every job and pay only after the work is done.",

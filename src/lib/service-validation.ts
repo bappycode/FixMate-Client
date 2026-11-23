@@ -1,8 +1,5 @@
-// Validators for the Add Service form. Each returns an error message, or undefined when valid.
-
 import { CATEGORY_NAMES } from "./categories";
 
-// Keep these equal to the limits in the Express service validator (validators/service.ts).
 export const SERVICE_LIMITS = {
   titleMin: 3,
   titleMax: 100,
@@ -38,7 +35,6 @@ export function validateServiceDescription(value: string): string | undefined {
   return undefined;
 }
 
-/** The price field is text in the form, so it is parsed here. */
 export function validatePrice(value: string): string | undefined {
   if (!value.trim()) return "Base price is required.";
   const price = Number(value);
@@ -64,7 +60,6 @@ export function validateServiceArea(value: string): string | undefined {
   return undefined;
 }
 
-/** The banner image is required; its type and size are checked when the file is picked. */
 export function validateServiceImage(file: File | null): string | undefined {
   return file ? undefined : "Upload a banner image for your service.";
 }

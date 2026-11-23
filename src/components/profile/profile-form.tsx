@@ -41,7 +41,6 @@ type UpdateProfileResponse = { user: ProfileValues };
 
 export function ProfileForm({ user }: ProfileFormProps) {
   const router = useRouter();
-  // The live session keeps the avatar current; refetch() makes the navbar and top bar update too.
   const { data: session, refetch } = authClient.useSession();
 
   const [saved, setSaved] = useState<ProfileValues>({
@@ -53,7 +52,7 @@ export function ProfileForm({ user }: ProfileFormProps) {
   const [values, setValues] = useState<ProfileValues>(saved);
   const [errors, setErrors] = useState<FieldErrors<Field>>({});
   const [photo, setPhoto] = useState<File | null>(null);
-  const [avatarKey, setAvatarKey] = useState(0); // changing it resets the photo picker after a save
+  const [avatarKey, setAvatarKey] = useState(0);
   const [submitting, setSubmitting] = useState(false);
 
   const fields = Object.keys(values) as Field[];
@@ -82,7 +81,6 @@ export function ProfileForm({ user }: ProfileFormProps) {
 
     setSubmitting(true);
     try {
-      // 1. Upload the new photo (if any), 2. save everything through the Express API.
       const image = photo ? await uploadImage(photo) : undefined;
       const payload = {
         name: values.name.trim(),
@@ -96,7 +94,6 @@ export function ProfileForm({ user }: ProfileFormProps) {
         body: JSON.stringify(payload),
       });
 
-      // Refresh the live session (navbar, top bar) and any server-rendered data on the page.
       await refetch();
       router.refresh();
 

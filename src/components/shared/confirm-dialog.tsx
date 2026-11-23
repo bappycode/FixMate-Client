@@ -18,14 +18,11 @@ type ConfirmDialogProps = {
   title: string;
   description: string;
   confirmLabel: string;
-  /** Red confirm button, for actions that cannot be undone. */
   destructive?: boolean;
-  /** True while the action runs; the buttons are disabled so it cannot be sent twice. */
   pending?: boolean;
   onConfirm: () => void;
 };
 
-// A "are you sure?" modal. The caller decides what happens on confirm and when to close it.
 export function ConfirmDialog({
   open,
   onOpenChange,

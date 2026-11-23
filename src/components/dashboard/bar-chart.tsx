@@ -6,18 +6,13 @@ import { formatPrice } from "@/lib/format";
 import type { ChartPoint } from "@/lib/chart-data";
 
 type BarChartCardProps = {
-  /** What the bars measure, e.g. "Bookings". Shown in the tooltip and read by screen readers. */
   valueName: string;
   data: ChartPoint[];
-  /** "money" prints values as dollars on the axis and in the table. */
   unit?: "count" | "money";
 };
 
 const formatValue = (value: number, unit: "count" | "money") => (unit === "money" ? formatPrice(value) : String(value));
 
-// One series, so there is no legend: the card title names it. The bars use the brand teal, and the
-// grid and axes stay quiet. Every chart also has a real table for screen readers, since a
-// picture of bars cannot be read aloud.
 export function BarChartCard({ valueName, data, unit = "count" }: BarChartCardProps) {
   const config = { value: { label: valueName, color: "var(--chart-1)" } } satisfies ChartConfig;
 

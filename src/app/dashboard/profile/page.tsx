@@ -5,8 +5,6 @@ import { requireSession } from "@/lib/session";
 
 export const metadata: Metadata = { title: "Update Profile" };
 
-// Shared by all three roles. It lives under /dashboard, so the dashboard layout has
-// already checked the session, and requireSession() here just returns the user.
 export default async function ProfilePage() {
   const { user } = await requireSession();
 

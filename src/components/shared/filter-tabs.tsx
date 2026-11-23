@@ -7,7 +7,6 @@ type FilterTabsProps<T extends string> = {
   options: { value: T; label: string; count: number }[];
 };
 
-// A row of pill buttons that filter a table, each with a live count.
 export function FilterTabs<T extends string>({ label, value, onChange, options }: FilterTabsProps<T>) {
   return (
     <div role="group" aria-label={label} className="mb-4 flex flex-wrap gap-2">

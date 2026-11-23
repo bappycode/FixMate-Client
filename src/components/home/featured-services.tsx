@@ -7,8 +7,6 @@ import { getLatestServices } from "@/lib/services-api";
 
 const GRID = "grid gap-6 sm:grid-cols-2 lg:grid-cols-3";
 
-// Async server component: it waits for the API. The page wraps it in <Suspense>,
-// so the skeleton below shows while it loads.
 export async function FeaturedServices() {
   const services = await getLatestServices(6);
 

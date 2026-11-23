@@ -16,14 +16,12 @@ type ShellUser = { name: string; email: string; image?: string | null; role?: st
 
 type DashboardShellProps = {
   role: Role;
-  /** Server-side session user, shown until the live session loads. */
   initialUser: ShellUser;
   children: React.ReactNode;
 };
 
 export function DashboardShell({ role, initialUser, children }: DashboardShellProps) {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  // Live session, so a profile update shows up here without signing out.
   const { data: session } = authClient.useSession();
   const user: ShellUser = session?.user ?? initialUser;
 

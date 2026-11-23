@@ -3,10 +3,6 @@
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
 
-// Toasts are white cards with a thin colored edge, like the rest of the site's cards:
-// teal for success, the red of destructive buttons for errors. They appear at the top centre,
-// just under the navbar (and the dashboard header), which are both 64px (h-16) tall.
-// The 80px offset leaves a 16px gap, so a toast never covers the navbar or the account menu.
 const TOAST_OFFSET = 80
 
 const Toaster = ({ ...props }: ToasterProps) => {

@@ -1,19 +1,13 @@
-// Validators for the repair request form and the "final amount" modal.
-// Each returns an error message, or undefined when valid.
-
-// Keep these equal to the limits in the Express booking validator (validators/booking.ts).
 export const BOOKING_LIMITS = { addressMin: 5, addressMax: 200, problemMin: 20, problemMax: 1000, maxAmount: 100000 } as const;
 
 const PHONE_PATTERN = /^\+?[0-9][0-9\s-]{5,18}$/;
 
-/** Today's date in the user's own time zone, as "YYYY-MM-DD" (the format of <input type="date">). */
 export function todayString(): string {
   const now = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
 }
 
-/** Required here (on a profile it is optional), because the technician needs a number to call. */
 export function validateRequiredPhone(value: string): string | undefined {
   const phone = value.trim();
   if (!phone) return "Phone number is required.";
@@ -29,7 +23,6 @@ export function validateAddress(value: string): string | undefined {
   return undefined;
 }
 
-/** Today or a future date. ISO date strings compare correctly as plain text. */
 export function validatePreferredDate(value: string): string | undefined {
   if (!value) return "Choose the date you want the service.";
   if (value < todayString()) return "The date must be today or later.";

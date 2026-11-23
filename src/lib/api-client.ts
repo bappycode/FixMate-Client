@@ -2,7 +2,6 @@ import { authClient } from "./auth-client";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-/** An error from the Express API, carrying the HTTP status (0 means the server was unreachable). */
 class ApiError extends Error {
   readonly status: number;
 
@@ -13,11 +12,6 @@ class ApiError extends Error {
   }
 }
 
-/**
- * Calls the Express API as the signed-in user. It asks Better Auth for a short-lived JWT
- * and sends it as "Authorization: Bearer <token>", which is what verifyToken expects.
- * Use it from client components only.
- */
 export async function apiFetch<T>(path: string, init: RequestInit = {}): Promise<T> {
   const { data, error } = await authClient.token();
   if (error || !data) {

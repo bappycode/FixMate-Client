@@ -1,8 +1,6 @@
 import Image from "next/image";
 import type { Booking } from "@/types/booking";
 
-// The service picture, title and category. The booking keeps its own copy of these,
-// so it still shows correctly if the service is edited or deleted later.
 export function BookingServiceCell({ booking }: { booking: Pick<Booking, "serviceImage" | "serviceTitle" | "category"> }) {
   return (
     <div className="flex items-center gap-3">

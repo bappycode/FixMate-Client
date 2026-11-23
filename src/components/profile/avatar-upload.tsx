@@ -9,9 +9,7 @@ import { cn } from "@/lib/utils";
 
 type AvatarUploadProps = {
   name: string;
-  /** The saved photo, shown until the user picks a new one. */
   currentImage?: string | null;
-  /** Called with the chosen file. Nothing is uploaded here; the form uploads on save. */
   onFileChange: (file: File) => void;
   disabled?: boolean;
 };
@@ -21,7 +19,6 @@ export function AvatarUpload({ name, currentImage, onFileChange, disabled }: Ava
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState<string>();
 
-  // Free the temporary preview URL when it is replaced or the component goes away.
   useEffect(() => {
     return () => {
       if (previewUrl) URL.revokeObjectURL(previewUrl);
@@ -30,7 +27,7 @@ export function AvatarUpload({ name, currentImage, onFileChange, disabled }: Ava
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
-    event.target.value = ""; // lets the same file be picked again later
+    event.target.value = "";
     if (!file) return;
 
     const problem = validateImageFile(file);

@@ -1,6 +1,5 @@
 import { AirVent, Laptop, Refrigerator, Smartphone, Tv, WashingMachine, Zap, type LucideIcon } from "lucide-react";
 
-// The exact category names stored in the database (see the services collection).
 export const CATEGORY_NAMES = [
   "Smartphone",
   "Laptop & PC",
@@ -25,7 +24,6 @@ export const CATEGORIES: { name: CategoryName; icon: LucideIcon; blurb: string }
   { name: "Electrical", icon: Zap, blurb: "Wiring, switches and fittings" },
 ];
 
-/** Link to the services page already filtered by a category, e.g. /services?category=AC */
 export function categoryHref(name: CategoryName): string {
   return `/services?category=${encodeURIComponent(name)}`;
 }

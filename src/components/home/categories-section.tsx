@@ -7,7 +7,6 @@ import { categoryHref, CATEGORIES } from "@/lib/categories";
 const CARD =
   "group flex h-full flex-col gap-4 rounded-xl border bg-card p-5 transition duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-// Each card links to /services?category=<name>, which opens the browse page already filtered.
 export function CategoriesSection() {
   return (
     <Section id="categories">
@@ -31,7 +30,6 @@ export function CategoriesSection() {
           </Link>
         ))}
 
-        {/* An eighth card keeps the grid even and gives a way to see everything. */}
         <Link href="/services" className={`${CARD} border-dashed bg-transparent`}>
           <span className="flex size-12 items-center justify-center rounded-xl bg-ink text-white">
             <LayoutGrid className="size-6" aria-hidden />

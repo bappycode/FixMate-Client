@@ -4,11 +4,9 @@ import { jwt } from "better-auth/plugins";
 import { nextCookies } from "better-auth/next-js";
 import { client, db } from "./mongodb";
 
-const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7; // 7 days
-const SESSION_REFRESH_SECONDS = 60 * 60 * 24; // extend once per day of use
+const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
+const SESSION_REFRESH_SECONDS = 60 * 60 * 24;
 
-// Only these two roles can be chosen at sign-up. Anything else, including
-// "admin", falls back to "customer". Admins are created manually (seed script).
 const normalizeSignUpRole = (value: unknown): "customer" | "technician" =>
   value === "technician" ? "technician" : "customer";
 
@@ -17,7 +15,6 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET,
   trustedOrigins: [process.env.BETTER_AUTH_URL as string],
 
-  // Passing `client` enables transactions (needs a replica set, which Atlas is).
   database: mongodbAdapter(db, { client }),
 
   emailAndPassword: {
@@ -47,8 +44,6 @@ export const auth = betterAuth({
         }),
       },
       update: {
-        // The profile form can change name, phone, area, bio and image, but
-        // never the role. Role changes go through the protected admin API only.
         before: async (data) => {
           const safeData: Record<string, unknown> = { ...data };
           delete safeData.role;
@@ -69,6 +64,6 @@ export const auth = betterAuth({
         }),
       },
     }),
-    nextCookies(), // must stay last in the plugins array
+    nextCookies(),
   ],
 });

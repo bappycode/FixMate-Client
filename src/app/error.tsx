@@ -3,7 +3,6 @@
 import { Logo } from "@/components/brand/logo";
 import { ErrorState } from "@/components/shared/error-state";
 
-// The error boundary for the whole site: a failed page shows this instead of a blank screen.
 export default function RootError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
     <>
